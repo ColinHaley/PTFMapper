@@ -16,5 +16,4 @@ http = httplib2.Http()
 
 status, response = http.request(web_page)
 
-for link in BeautifulSoup(response, parseOnlyThese=strainer('ul')):
-    print(link)
+variables = BeautifulSoup(response, parseOnlyThese=strainer('ul'))
