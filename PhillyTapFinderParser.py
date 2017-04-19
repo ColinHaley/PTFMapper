@@ -6,24 +6,7 @@ import datetime
 from BeautifulSoup import BeautifulSoup,SoupStrainer
 import urllib2
 import httplib2
-
-
-class Event:
-
-    title = ""
-    location = ""
-    hyperlink = ""
-    date = datetime.date.today()
-
-    def __init__(self, Title, Location, HyperLink, Date):
-        title = Title
-        location = Location
-        hyperlink = HyperLink
-        date = Date
-
-def create_event():
-    return 0
-
+import Event
 
 web_page = "http://www.phillytapfinder.com/events/"
 
@@ -37,7 +20,7 @@ for line in payload.findAll('a'):
     a = line.get('href')
     b = line.get('title')
     print (a + "" + b)
-    -#span stuff should go under findAll('a')
+    #span stuff should go under findAll('a')
 spans = payload.findAll('span')
 spans[0].findAll('span')[0].getText('>')
 for x in spans[0].findAll('span'):
