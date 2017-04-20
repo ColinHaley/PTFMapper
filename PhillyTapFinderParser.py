@@ -6,7 +6,7 @@ import datetime
 from BeautifulSoup import BeautifulSoup,SoupStrainer
 import urllib2
 import httplib2
-import Event
+import PTFEvent
 
 web_page = "http://www.phillytapfinder.com/events/"
 
@@ -16,12 +16,13 @@ status, response = http.request(web_page)
 
 # This is the grid.
 payload = BeautifulSoup(response, parseOnlyThese=SoupStrainer('div',{'class':'results-grid tall-results'}))
+
+events=[]
+
 for line in payload.findAll('a'):
-    a = line.get('href')
-    b = line.get('title')
-    print (a + "" + b)
-    #span stuff should go under findAll('a')
-spans = payload.findAll('span')
-spans[0].findAll('span')[0].getText('>')
-for x in spans[0].findAll('span'):
-    x.getText('>')
+    event = line.getText('>').split('>')
+    link = line.findParent().findAll('a', href=True)[0]['href']
+    date = event[2].replace('Event Date: ','')
+    title = event[3]
+    location = event[4]
+    events.append(PTFEvent.PTFEvent(title,location,link,date))

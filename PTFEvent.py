@@ -1,6 +1,6 @@
 import datetime
 
-class Event:
+class PTFEvent:
 
     title = ""
     location = ""
