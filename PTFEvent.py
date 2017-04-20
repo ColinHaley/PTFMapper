@@ -2,13 +2,13 @@ import datetime
 
 class PTFEvent:
 
-    title = ""
-    location = ""
-    hyperlink = ""
-    date = datetime.date.today()
+    title = None
+    location = None
+    hyperlink = None
+    date = None
 
     def __init__(self, Title, Location, HyperLink, Date):
-        title = Title
-        location = Location
-        hyperlink = HyperLink
-        date = Date
+        self.title = Title
+        self.location = Location
+        self.hyperlink = HyperLink
+        self.date = Date
