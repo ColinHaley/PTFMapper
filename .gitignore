@@ -115,4 +115,4 @@ dist
 *.sqlite
 .idea
 dump.rdb
-
+.env
